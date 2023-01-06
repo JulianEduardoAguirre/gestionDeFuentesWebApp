@@ -15,9 +15,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -32,13 +34,19 @@ public class Fuente {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
-    
+    @NotBlank(message = "Ingrese el número de serie de la fuente")
     private String numero_de_serie;
+    
+    @NotNull(message = "Ingrese la actividad inicial")
     private Float actividad_fabricacion;
+    
+    @NotNull(message = "Ingrese la tasa de exposición inicial")
     private Float tasa_exposicion_fabricacion;  //dX/dt0 a 1 metro
     
-    @Temporal(TemporalType.DATE)
-    private Date fecha_fabricación;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Past
+    @NotNull(message = "Ingrese la fecha de fabricación")
+    private Date fecha_fabricacion;
     
     @Enumerated(EnumType.STRING)
     private Radionucleido radionucleido;
@@ -80,12 +88,12 @@ public class Fuente {
         this.tasa_exposicion_fabricacion = tasa_exposicion_fabricacion;
     }
 
-    public Date getFecha_fabricación() {
-        return fecha_fabricación;
+    public Date getFecha_fabricacion() {
+        return fecha_fabricacion;
     }
 
-    public void setFecha_fabricación(Date fecha_fabricación) {
-        this.fecha_fabricación = fecha_fabricación;
+    public void setFecha_fabricacion(Date fecha_fabricacion) {
+        this.fecha_fabricacion = fecha_fabricacion;
     }
 
     public Radionucleido getRadionucleido() {

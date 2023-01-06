@@ -8,6 +8,8 @@ package com.radioproteccion.fuentes.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -22,9 +24,16 @@ public class Blindaje {
     @GenericGenerator(name = "uuid", strategy = "uuid2")    
     private String id;
     
+    @NotBlank(message = "Ingrese el nombre del blindaje")
     private String modelo;
+    
+    @NotNull(message = "Ingrese la altura del blindaje")
     private Long altura;
+    
+    @NotNull(message = "Ingrese el radio del blindake")
     private Long radio;
+
+    @NotNull(message = "Ingrese el peso del blindaje")
     private Long peso;
 
     public Blindaje() {

@@ -12,6 +12,7 @@ import com.radioproteccion.fuentes.repositorios.FuenteRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -30,6 +31,7 @@ public class FuenteServicio {
     private BlindajeServicio blindajeServicio;
     
     
+    @Transactional(rollbackFor = Exception.class)
     public void crear (Fuente fuente, String idFuente, String idBlindaje){
         Fuente fuenteC = new Fuente();
         Fabricante fabricante = fabricanteServicio.buscarPorId(idFuente);
@@ -38,7 +40,7 @@ public class FuenteServicio {
         fuenteC.setNumero_de_serie(fuente.getNumero_de_serie());
         fuenteC.setActividad_fabricacion(fuente.getActividad_fabricacion());
         fuenteC.setTasa_exposicion_fabricacion(fuente.getTasa_exposicion_fabricacion());
-        fuenteC.setFecha_fabricación(fuente.getFecha_fabricación());
+        fuenteC.setFecha_fabricacion(fuente.getFecha_fabricacion());
         
         fuenteC.setRadionucleido(fuente.getRadionucleido());
         fuenteC.setFabricante(fabricante);
@@ -47,16 +49,18 @@ public class FuenteServicio {
         fuenteRepositorio.save(fuenteC);
     }
     
-    public void modificar (Fuente fuente, String idFuente, String idBlindaje) {
-        Fuente fuenteDB = fuenteRepositorio.getById(fuente.getId());
+    
+    @Transactional(rollbackFor = Exception.class)
+    public void modificar (String fuenteId, Fuente fuente, String fabricanteId, String blindajeId) {
+        Fuente fuenteDB = fuenteRepositorio.getById(fuenteId);
         
-        Fabricante fabricante = fabricanteServicio.buscarPorId(idFuente);
-        Blindaje blindaje = blindajeServicio.buscarPorId(idBlindaje);
+        Fabricante fabricante = fabricanteServicio.buscarPorId(fabricanteId);
+        Blindaje blindaje = blindajeServicio.buscarPorId(blindajeId);
         
         fuenteDB.setNumero_de_serie(fuente.getNumero_de_serie());
         fuenteDB.setActividad_fabricacion(fuente.getActividad_fabricacion());
         fuenteDB.setTasa_exposicion_fabricacion(fuente.getTasa_exposicion_fabricacion());
-        fuenteDB.setFecha_fabricación(fuente.getFecha_fabricación());
+        fuenteDB.setFecha_fabricacion(fuente.getFecha_fabricacion());
         
         fuenteDB.setRadionucleido(fuente.getRadionucleido());
         fuenteDB.setFabricante(fabricante);
@@ -65,24 +69,40 @@ public class FuenteServicio {
         fuenteRepositorio.save(fuenteDB);    
     }
     
-    public void eliminar(Fuente fuente){
-        fuenteRepositorio.delete(fuente);
+    
+    @Transactional(rollbackFor = Exception.class)
+    public void eliminar(String fuenteId){
+        fuenteRepositorio.deleteById(fuenteId);
     }
     
+    
+    @Transactional(readOnly = true)
+    public Fuente buscarPorId(String id){
+        return fuenteRepositorio.findById(id).get();
+    }
+    
+    
+    @Transactional(readOnly = true)
     public List<Fuente> listarTodas(){
         return fuenteRepositorio.findAll();
     }
     
+    
+    @Transactional(readOnly = true)
     public List<Fuente> listarPorFabricanteId(String fabricanteId){
         return fuenteRepositorio.buscarPorFabricanteId(fabricanteId);
     }
     
+    
+    @Transactional(readOnly = true)
     public List<Fuente> listarPorBlindajeId(String blindajeId){
         return fuenteRepositorio.buscarPorBlindajeId(blindajeId);
     }
     
-    public List<Fuente> listarPorFabricanteNombre(String nombre){
-        return fuenteRepositorio.buscarPorFabricanteNombre(nombre);
+    
+    @Transactional(readOnly = true)
+    public List<Fuente> listarPorFabricanteNombre(String nombreFabricante){
+        return fuenteRepositorio.buscarPorFabricanteNombre(nombreFabricante);
     }
     
     

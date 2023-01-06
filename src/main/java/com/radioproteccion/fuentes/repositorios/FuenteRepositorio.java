@@ -27,4 +27,5 @@ public interface FuenteRepositorio extends JpaRepository<Fuente, String> {
     
     @Query("SELECT f FROM Fuente f WHERE f.blindaje.id = :id")
     public List<Fuente> buscarPorBlindajeId(@Param("id") String id);
+    
 }

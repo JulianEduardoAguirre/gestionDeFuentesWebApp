@@ -27,31 +27,34 @@ public class FabricanteServicio {
          fabricanteRepositorio.save(fabricante);
     }
     
+    @Transactional(readOnly = true)
     public List<Fabricante> listarTodos(){
         return fabricanteRepositorio.findAll();
     }
     
+    @Transactional(readOnly = true)
     public Fabricante buscarPorId(String id){
         return fabricanteRepositorio.findById(id).get();
     }
     
+    @Transactional(readOnly = true)
     public List<Fabricante> buscarPorNombre (String nombre){
-        List<Fabricante> fabricantes = fabricanteRepositorio.buscarPorNombre(nombre);
         
-        return fabricantes;
+        return fabricanteRepositorio.buscarPorNombre(nombre);
     }
     
-    public Fabricante modificar (Fabricante fabricante){
-        Fabricante fabricanteDB = fabricanteRepositorio.findById(fabricante.getId()).get();
+    @Transactional(rollbackFor = Exception.class)
+    public Fabricante modificar (String id, Fabricante fabricante){
+        Fabricante fabricanteDB = fabricanteRepositorio.findById(id).get();
         
         fabricanteDB.setNombre(fabricante.getNombre());
         
         return fabricanteRepositorio.save(fabricanteDB);
     }
     
-    public Boolean eliminar (Fabricante fabricante){
-        fabricanteRepositorio.delete(fabricante);
+    @Transactional(rollbackFor = Exception.class)
+    public void eliminar (String fabricanteId){
+        fabricanteRepositorio.deleteById(fabricanteId);
         
-        return true;
     }
 }

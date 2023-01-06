@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Blindajes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
@@ -16,20 +16,26 @@ and open the template in the editor.
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>        
     </head>
     <body>
-        <h2>Listado de editoriales</h2>
+        <h2>Listado de blindajes</h2>
         <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
         <div class="container mt-3">
           <table class="table table-striped-columns">
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Altura [mm]</th>
+                <th>Radio [mm]</th>
+                <th>Peso [Kg]</th>
               </tr>
             </thead>
             <tbody>
-              <tr th:each="fabricante : ${fabricantes}">
-                <th scope="row" th:text="${fabricante.id}"></th>
-                <td ><a th:text="${fabricante.nombre}"></a></td>
+              <tr th:each="blindaje : ${blindajes}">
+                <th scope="row" th:text="${blindaje.id}"></th>
+                <td ><a th:text="${blindaje.modelo}"></a></td>
+                <td ><a th:text="${blindaje.altura}"></a></td>
+                <td ><a th:text="${blindaje.radio}"></a></td>
+                <td ><a th:text="${blindaje.peso}"></a></td>
               </tr>
             </tbody>
           </table>

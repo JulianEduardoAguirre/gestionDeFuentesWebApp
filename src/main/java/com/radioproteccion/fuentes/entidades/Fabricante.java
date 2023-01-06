@@ -8,6 +8,7 @@ package com.radioproteccion.fuentes.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -21,6 +22,8 @@ public class Fabricante {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+    
+    @NotBlank(message = "Ingrese el nombre del fabricante")
     private String nombre;
 
     public Fabricante() {
