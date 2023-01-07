@@ -9,42 +9,52 @@ and open the template in the editor.
         <title>Fuentes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>        
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>   
     </head>
     <body>
-        <h2 class="text-center">Listado de fuentes</h2>
         <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
-        <div class="container mt-3">
-          <table class="table table-striped-columns table-hover">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>SN</th>
-                <th>Act. Inicial</th>
-                <th>dX/dt[0]</th>
-                <th>Fecha Fabr.</th>
-                <th>Radionucleído</th>
-                <th>Fabricante</th>
-                <th>Blindaje</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="fuente : ${fuentes}">
-                <th scope="row" th:text="${fuente.id}"></th>
-                <td th:text="${fuente.numero_de_serie}"></td>
-                <td th:text="${fuente.actividad_fabricacion}"></td>
-                <td th:text="${fuente.tasa_exposicion_fabricacion}"></td>
-                <td th:text="${fuente.fecha_fabricacion}"></td>
-                <td th:text="${fuente.radionucleido}"></td>
-                <td th:text="${fuente.fabricante.nombre}"></td>
-                <td th:text="${fuente.blindaje.modelo}"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="wrapper">
+          <div th:replace="fragmentos :: sidebar"></div>
+          <div id="content">
+            <div th:replace="fragmentos :: navbar"></div>            
+            <div class="container mt-3">
+              <h2 class="text-center">Listado de fuentes</h2>
+
+              <table class="table table-striped-columns table-hover">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>SN</th>
+                    <th>Act. Inicial</th>
+                    <th>dX/dt[0]</th>
+                    <th>Fecha Fabr.</th>
+                    <th>Radionucleído</th>
+                    <th>Fabricante</th>
+                    <th>Blindaje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="fuente : ${fuentes}">
+                    <th scope="row" th:text="${fuente.id}"></th>
+                    <td th:text="${fuente.numero_de_serie}"></td>
+                    <td th:text="${fuente.actividad_fabricacion}"></td>
+                    <td th:text="${fuente.tasa_exposicion_fabricacion}"></td>
+                    <td th:text="${fuente.fecha_fabricacion}"></td>
+                    <td th:text="${fuente.radionucleido}"></td>
+                    <td th:text="${fuente.fabricante.nombre}"></td>
+                    <td th:text="${fuente.blindaje.modelo}"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div> 
     </body>
 </html>
