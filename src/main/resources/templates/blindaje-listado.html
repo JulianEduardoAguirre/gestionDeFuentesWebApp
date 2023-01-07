@@ -19,11 +19,11 @@ and open the template in the editor.
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>   
     </head>
     <body>
-        <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
-        <div class="wrapper">
-          <div th:replace="fragmentos :: sidebar"></div>
-          <div id="content">
-            <div th:replace="fragmentos :: navbar"></div>
+      <div class="wrapper">
+        <div th:replace="fragmentos :: sidebar"></div>
+        <div id="content">
+          <div th:replace="fragmentos :: navbar"></div>
+          <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
             <h2 class="text-center">Listado de blindajes</h2>
             <div class="container mt-3">
               <table class="table table-striped-columns">
