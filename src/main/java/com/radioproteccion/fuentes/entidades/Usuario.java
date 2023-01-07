@@ -5,6 +5,7 @@
  */
 package com.radioproteccion.fuentes.entidades;
 
+import com.radioproteccion.fuentes.enumeraciones.Rol;
 import com.radioproteccion.fuentes.enumeraciones.Seccion;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -45,6 +46,10 @@ public class Usuario {
     
     @Enumerated(EnumType.STRING)
     private Seccion seccion;
+    
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
 
     public Usuario() {
     }
@@ -93,6 +98,12 @@ public class Usuario {
         this.seccion = seccion;
     }
     
-    
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
     
 }
