@@ -40,11 +40,11 @@ and open the template in the editor.
           </div>
 
           <div>
-            <form th:if="${fuente.prestada}" th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
+            <form sec:authorize="isAuthenticated()" th:if="${fuente.prestada}" th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
               <button disabled type="submit" class="btn btn-success">Solicitar</button>
             </form>
   
-            <form th:if="${!fuente.prestada}" th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
+            <form sec:authorize="isAuthenticated()" th:if="${!fuente.prestada}" th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
               <button type="submit" class="btn btn-success">Solicitar</button>
             </form>
 

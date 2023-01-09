@@ -7,6 +7,7 @@ package com.radioproteccion.fuentes.entidades;
 
 import com.radioproteccion.fuentes.enumeraciones.Rol;
 import com.radioproteccion.fuentes.enumeraciones.Seccion;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -35,6 +37,11 @@ public class Usuario {
     
     @NotBlank(message = "Debe ingresar su apellido")
     private String apellido;
+    
+    @NotNull(message = "Ingrese su matrícula institucional")
+    @Column(unique = true)
+    private Long matricula;
+    
     
     @NotBlank(message = "Debe ingresar su dirección de correo electrónico")
     @Email
@@ -74,6 +81,14 @@ public class Usuario {
         this.apellido = apellido;
     }
 
+    public Long getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Long matricula) {
+        this.matricula = matricula;
+    }
+    
     public String getEmail() {
         return email;
     }

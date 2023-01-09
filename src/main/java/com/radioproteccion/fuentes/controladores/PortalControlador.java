@@ -34,7 +34,8 @@ public class PortalControlador {
     }
     
     @GetMapping("/login")
-    public String login(){
+    public String login(ModelMap modelo){
+        modelo.put("variable", true);
         return "login.html";
     }
     

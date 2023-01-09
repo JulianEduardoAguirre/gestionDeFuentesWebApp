@@ -44,6 +44,13 @@ and open the template in the editor.
                             
                                 <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="invalid-feedback"></div>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="apellido">Matrícula: </label>
+                                <input type="number" id="matricula" placeholder="Ingrese su legajo" th:field="*{matricula}" class="form-control" th:errorClass="is-invalid">
+                            
+                                <div th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}" class="invalid-feedback"></div>
+                            </div>
                             
                             <div class="mb-3">
                                 <label for="email">Email: </label>
