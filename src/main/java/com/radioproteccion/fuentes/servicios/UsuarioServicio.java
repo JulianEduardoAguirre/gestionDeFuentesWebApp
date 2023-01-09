@@ -36,7 +36,9 @@ public class UsuarioServicio implements UserDetailsService{
     
     
     @Transactional(rollbackFor = Exception.class)
-    public void crear(Usuario usuario, String password, String password2){
+    public void crear(Usuario usuario, String password, String password2) throws Exception{
+        
+        validarPasswords(password, password2);
         
         //Agregar los setters de la contraseña junto con el encriptador
         usuario.setRol(Rol.USER);
@@ -111,5 +113,21 @@ public class UsuarioServicio implements UserDetailsService{
         } else {
             return null;
         }
+    }
+    
+    private void validarPasswords(String password, String password2) throws Exception{
+        
+        if(password == null || password.isEmpty()){
+            throw new Exception("Debe ingresar una contraseña.");
+        }
+        
+        if(password.length() < 8){
+            throw new Exception("La contraseña debe tener, al menos, 8 catacteres.");
+        }
+        
+        if(!password.equals(password2)){
+            throw new Exception("Las contraseñas no coinciden.");
+        }
+        
     }
 }

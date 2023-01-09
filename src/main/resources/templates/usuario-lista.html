@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Blindajes</title>
+        <title>Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS CDN -->
@@ -22,33 +22,37 @@ and open the template in the editor.
       <div class="wrapper">
         <div th:replace="fragmentos :: sidebar"></div>
         <div id="content">
-          <div th:replace="fragmentos :: navbar"></div>
+          <div th:replace="fragmentos :: navbar"></div>            
           <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
-            <h2 class="text-center">Listado de blindajes</h2>
             <div class="container mt-3">
-              <table class="table table-striped-columns">
+              <h2 class="text-center">Lista de usuarios</h2>
+
+              <table class="table table-striped-columns table-hover">
                 <thead>
                   <tr>
                     <!-- <th>Id</th> -->
-                    <th>Modelo</th>
-                    <th>Altura [mm]</th>
-                    <th>Radio [mm]</th>
-                    <th>Peso [Kg]</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Sección</th>
+                    <th>Rol</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="blindaje : ${blindajes}">
-                    <!-- <th scope="row" th:text="${blindaje.id}"></th> -->
-                    <td ><a th:text="${blindaje.modelo}"></a></td>
-                    <td ><a th:text="${blindaje.altura}"></a></td>
-                    <td ><a th:text="${blindaje.radio}"></a></td>
-                    <td ><a th:text="${blindaje.peso}"></a></td>
+                  <tr th:each="usuario : ${usuarios}">
+                    <!-- <th scope="row" th:text="${fuente.id}"></th> -->
+                    <td th:text="${usuario.nombre}"></td>
+                    <td th:text="${usuario.apellido}"></td>
+                    <td th:text="${usuario.email}"></td>
+                    <td th:text="${usuario.seccion}"></td>
+                    <td th:text="${usuario.rol}"></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
+        </div> 
+
         <div th:replace="fragmentos :: scripts"></div>
     </body>
 </html>

@@ -30,7 +30,7 @@ and open the template in the editor.
               <table class="table table-striped-columns table-hover">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <!-- <th>Id</th> -->
                     <th>SN</th>
                     <th>Act. Inicial</th>
                     <th>dX/dt[0]</th>
@@ -42,7 +42,7 @@ and open the template in the editor.
                 </thead>
                 <tbody>
                   <tr th:each="fuente : ${fuentes}">
-                    <th scope="row" th:text="${fuente.id}"></th>
+                    <!-- <th scope="row" th:text="${fuente.id}"></th> -->
                     <td th:text="${fuente.numero_de_serie}"></td>
                     <td th:text="${fuente.actividad_fabricacion}"></td>
                     <td th:text="${fuente.tasa_exposicion_fabricacion}"></td>
