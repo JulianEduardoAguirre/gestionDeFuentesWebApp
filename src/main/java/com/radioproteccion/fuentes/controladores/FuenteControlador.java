@@ -128,6 +128,13 @@ public class FuenteControlador {
         return "fuente-detalles.html";
     }
     
+    @PostMapping("/cambiar-estado/{id}")
+    public String cambiarEstado(@PathVariable("id") String id, RedirectAttributes attr){
+        
+        fuenteServicio.cambiarEstado(id);
+        return "redirect:/fuente/lista";
+        
+    }
     
     
     

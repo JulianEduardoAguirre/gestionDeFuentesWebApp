@@ -96,4 +96,13 @@ public class FabricanteControlador {
         
         return "redirect:/fabricante/lista";
     }
+    
+    @GetMapping("detalles/{id}")
+    public String detalles(@PathVariable("id") String id, ModelMap modelo){
+        Fabricante fabricante = fabricanteServicio.buscarPorId(id);
+        modelo.put("fabricante", fabricante);
+        
+        return "fabricante-detalles.html";
+        
+    }
 }

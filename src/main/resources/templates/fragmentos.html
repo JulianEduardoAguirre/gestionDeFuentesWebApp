@@ -150,7 +150,7 @@
                 </ul>
             </li>
 
-            <li sec:authorize="isAuthenticated() && hasRole('SUPER_ADMIN')">
+            <li sec:authorize="isAuthenticated() && hasRole('ADMIN')">
                 <a href="#usuariosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Usuarios</a>
                 <ul class="collapse list-unstyled" id="usuariosSubmenu">
                     <li>
@@ -165,16 +165,25 @@
                 <a sec:authorize="hasRole('SUPER_ADMIN')" href="#">Configuración</a>
             </li>
             <li>
+                <a sec:authorize="isAuthenticated()" th:href="@{/usuario/mis-prestamos}">Mis prestamos</a>
+            </li>
+            <li>
                 <a href="#">Contacto</a>
             </li>
         </ul>
 
         <ul class="list-unstyled CTAs" sec:authorize="hasRole('ADMIN')">
             <li>
-                <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                <a href="#" class="download">Manual de Radioprotección</a>
             </li>
             <li>
-                <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                <a href="#" class="download">Detectores Portátiles</a>
+            </li>
+            <li>
+                <a href="#" class="article">Monitores de Área</a>
+            </li>
+            <li>
+                <a href="#" class="article2">Dosimetría</a>
             </li>
         </ul>
     </nav>

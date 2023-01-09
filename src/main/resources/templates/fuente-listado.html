@@ -38,6 +38,10 @@ and open the template in the editor.
                     <th>Radionucleído</th>
                     <th>Fabricante</th>
                     <th>Blindaje</th>
+                    <th>Disponible</th>
+                    <th sec:authorize="hasRole('ADMIN')">Acciones</th>
+                    
+
                   </tr>
                 </thead>
                 <tbody>
@@ -50,6 +54,13 @@ and open the template in the editor.
                     <td th:text="${fuente.radionucleido}"></td>
                     <td th:text="${fuente.fabricante.nombre}"></td>
                     <td th:text="${fuente.blindaje.modelo}"></td>
+                    <td th:text="${fuente.prestada? 'No' : 'Si'}"></td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                      <a class="btn btn-warning" th:href="@{/fuente/modificar/__${fuente.id}__}">Editar</a>
+                      <form th:action="@{/fuente/cambiar-estado/__${fuente.id}__}" method="POST">
+                        <input type="submit" class="btn btn-secondary" value="Estado"></input>
+                      </form>
+                    </td>
                   </tr>
                 </tbody>
               </table>

@@ -95,6 +95,13 @@ public class BlindajeControlador {
         
     }
     
+    @GetMapping("/detalles/{id}")
+    public String detalles(@PathVariable("id") String id, ModelMap modelo){
+        Blindaje blindaje = blindajeServicio.buscarPorId(id);
+        modelo.put("blindaje", blindaje);
+        
+        return "blindaje-detalles.html";
+    }
     
     
 }

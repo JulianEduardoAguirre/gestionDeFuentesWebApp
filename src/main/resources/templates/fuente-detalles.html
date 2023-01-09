@@ -38,6 +38,10 @@ and open the template in the editor.
                 <p th:text="${fuente.blindaje.modelo}"></p>
             </div>
           </div>
+
+          <form th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
+            <button type="submit" class="btn btn-success">Solicitar</button>
+          </form>
         </div>
         <div th:replace="fragmentos :: scripts"></div>
     </body>

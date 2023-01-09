@@ -141,6 +141,12 @@ a.article:hover {
     color: #fff !important;
 }
 
+a.article2,
+a.article2:hover {
+    background: #6dc1cc !important;
+    color: #fff !important;
+}
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

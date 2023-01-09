@@ -48,6 +48,8 @@ public class Fuente {
     @NotNull(message = "Ingrese la fecha de fabricación")
     private Date fecha_fabricacion;
     
+    private Boolean prestada;
+    
     @Enumerated(EnumType.STRING)
     private Radionucleido radionucleido;
     
@@ -119,6 +121,16 @@ public class Fuente {
     public void setBlindaje(Blindaje blindaje) {
         this.blindaje = blindaje;
     }
+
+    public Boolean getPrestada() {
+        return prestada;
+    }
+
+    public void setPrestada(Boolean prestada) {
+        this.prestada = prestada;
+    }
+    
+    
      
     
     

@@ -25,6 +25,13 @@ public class Fabricante {
     
     @NotBlank(message = "Ingrese el nombre del fabricante")
     private String nombre;
+    
+    @NotBlank(message = "Ingrese el teléfono del fabricante")
+    private String telefono;
+    
+    
+    @NotBlank(message = "Ingrese la dirección de contacto")
+    private String contacto;
 
     public Fabricante() {
     }
@@ -40,6 +47,23 @@ public class Fabricante {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+    
     
     
 }

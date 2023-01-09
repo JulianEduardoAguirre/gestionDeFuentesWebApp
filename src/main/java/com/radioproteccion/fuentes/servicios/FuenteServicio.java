@@ -48,6 +48,8 @@ public class FuenteServicio {
         fuenteC.setFabricante(fabricante);
         fuenteC.setBlindaje(blindaje);
         
+        fuenteC.setPrestada(false);
+        
         fuenteRepositorio.save(fuenteC);
     }
     
@@ -105,6 +107,19 @@ public class FuenteServicio {
     @Transactional(readOnly = true)
     public List<Fuente> listarPorFabricanteNombre(String nombreFabricante){
         return fuenteRepositorio.buscarPorFabricanteNombre(nombreFabricante);
+    }
+    
+    @Transactional(rollbackFor = Exception.class)
+    public void cambiarEstado(String id){
+        Fuente fuenteDB = fuenteRepositorio.getById(id);
+        
+        if(fuenteDB.getPrestada()){
+            fuenteDB.setPrestada(Boolean.FALSE);
+        } else {
+            fuenteDB.setPrestada(Boolean.TRUE);
+        }
+        
+        fuenteRepositorio.save(fuenteDB);
     }
     
     public double calcularActividad(Fuente fuente){

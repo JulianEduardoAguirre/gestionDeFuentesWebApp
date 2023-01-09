@@ -6,8 +6,8 @@ and open the template in the editor.
 -->
 <html>
     <head>
-      <title>Listado de fabricantes</title>
-      <meta charset="UTF-8">
+        <title>Fabricante</title>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -17,40 +17,22 @@ and open the template in the editor.
         <!-- Font Awesome JS -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>   
+    </head>
     <body>
-      
       <div class="wrapper">
         <div th:replace="fragmentos :: sidebar"></div>
         <div id="content">
           <div th:replace="fragmentos :: navbar"></div>
-          <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
-          <div class="container mt-3">
-              <h2 class="text-center">Listado de fabricantes</h2>
+
+          <h2 class="text-center" th:text="${fabricante.nombre}"></h2>
+            <div class="container mt-3">
               <table class="table table-striped-columns">
-                <thead>
-                  <tr>
-                    <!-- <th>Id</th> -->
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Dirección Web</th>
-                    <th sec:authorize="hasRole('ADMIN')">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="fabricante : ${fabricantes}">
-                    <!-- <th scope="row" th:text="${fabricante.id}"></th> -->
-                    <td ><a th:text="${fabricante.nombre}"></a></td>
-                    <td ><a th:text="${fabricante.telefono}"></a></td>
-                    <td ><a th:text="${fabricante.contacto}"></a></td>
-                    <td sec:authorize="hasRole('ADMIN')">
-                      <a class="btn btn-warning" th:href="@{/fabricante/modificar/__${fabricante.id}__}">Editar</a></td>
-                  </tr>
-                </tbody>
-              </table>
+                <p th:text="${fabricante.nombre}"></p>
+                <p th:text="${fabricante.telefono}"></p>
+                <p th:text="${fabricante.contacto}"></p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div th:replace="fragmentos :: scripts"></div>
+        <div th:replace="fragmentos :: scripts"></div>
     </body>
 </html>

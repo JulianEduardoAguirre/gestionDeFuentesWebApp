@@ -34,6 +34,7 @@ and open the template in the editor.
                     <th>Altura [mm]</th>
                     <th>Radio [mm]</th>
                     <th>Peso [Kg]</th>
+                    <th sec:authorize="hasRole('ADMIN')">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,9 @@ and open the template in the editor.
                     <td ><a th:text="${blindaje.altura}"></a></td>
                     <td ><a th:text="${blindaje.radio}"></a></td>
                     <td ><a th:text="${blindaje.peso}"></a></td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                      <a class="btn btn-warning" th:href="@{/blindaje/modificar/__${blindaje.id}__}">Editar</a>
+                    </td>
                   </tr>
                 </tbody>
               </table>

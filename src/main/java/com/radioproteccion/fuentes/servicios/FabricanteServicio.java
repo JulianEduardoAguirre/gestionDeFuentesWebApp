@@ -48,6 +48,8 @@ public class FabricanteServicio {
         Fabricante fabricanteDB = fabricanteRepositorio.findById(id).get();
         
         fabricanteDB.setNombre(fabricante.getNombre());
+        fabricanteDB.setTelefono(fabricante.getTelefono());
+        fabricanteDB.setContacto(fabricante.getContacto());
         
         return fabricanteRepositorio.save(fabricanteDB);
     }
