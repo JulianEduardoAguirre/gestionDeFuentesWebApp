@@ -37,11 +37,17 @@ public class UsuarioControlador {
         
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");   
         
-        List<Prestamo> prestamos = prestamoServicio.listarTodos(); //prestamoServicio.listarActivosPropios(usuario.getId());
+        List<Prestamo> prestamos = prestamoServicio.listarActivosPropios(usuario.getId());
+        boolean mi_var = false;
+        if(prestamos.size() != 0){
+            mi_var = true;
+        }
+        
         
         modelo.put("prestamos", prestamos);
         modelo.put("usuariosession", session);
         modelo.put("usuario", usuario);
+        modelo.put("mi_var", mi_var);
 
         return "prestamos-lista.html";        
         
@@ -49,7 +55,7 @@ public class UsuarioControlador {
     
     
     @PostMapping("/devolver/{id}")
-    public String devolverPrestamo(@RequestParam("id") String prestamoId){
+    public String devolverPrestamo(@PathVariable("id") String prestamoId){
         
         prestamoServicio.devolverFuente(prestamoId);
         
@@ -61,13 +67,12 @@ public class UsuarioControlador {
     public String pedirPrestamo(@PathVariable("id") String fuenteId, HttpSession session){
         
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");  
-        String usuarioId = usuario.getId();
         
         try {
-            prestamoServicio.pedirFuente(usuarioId, fuenteId);
+            prestamoServicio.pedirFuente(usuario.getId(), fuenteId);
             
         } catch (Exception ex) {
-            Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("LA REMIL PUTISIMA MADRE");
         }
         
         return "redirect:/fuente/lista";

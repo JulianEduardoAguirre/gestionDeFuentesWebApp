@@ -25,9 +25,9 @@ and open the template in the editor.
           <div th:replace="fragmentos :: navbar"></div>
           <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
             <h2 class="text-center">Mis préstamos</h2>
-            <h2 th:if="${usuario != null}" th:text="${usuario.id}"></h2>
             <div class="container mt-3">
-              <table class="table table-striped-columns">
+              <h5 th:if="${!mi_var}" class="text-center">No posee préstamos en este momento.</h5>  
+              <table  th:if="${mi_var}" class="table table-striped-columns">
                 <thead>
                   <tr>
                     <!-- <th>Id</th> -->
@@ -46,7 +46,9 @@ and open the template in the editor.
                     <td ><a th:text="${prestamo.fechaFin}"></a></td>
                     <td ><a th:text="${prestamo.fuente.numero_de_serie}"></a></td>
                     <td>
-                      <a class="btn btn-warning">Editar</a>
+                        <form th:action="@{/usuario/devolver/__${prestamo.id}__}" method="POST">
+                            <button type="submit" class="btn btn-success">Devolver</button>
+                        </form>
                     </td>
                   </tr>
                 </tbody>

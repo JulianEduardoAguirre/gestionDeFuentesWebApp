@@ -34,7 +34,7 @@ public class PrestamoServicio {
     @Transactional(rollbackFor = Exception.class)
     public void pedirFuente(String usuarioId, String fuenteId) throws Exception{
         
-        Usuario usuario = usuarioServicio.buscarPorId(fuenteId);
+        Usuario usuario = usuarioServicio.buscarPorId(usuarioId);
         Fuente fuente = fuenteServicio.buscarPorId(fuenteId);
         
         if(fuente.getPrestada()){

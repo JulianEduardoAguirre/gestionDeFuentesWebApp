@@ -23,7 +23,7 @@ and open the template in the editor.
         <div th:replace="fragmentos :: sidebar"></div>
         <div id="content">
           <div th:replace="fragmentos :: navbar"></div>
-          <div class="alert alert-success" th:if="${exito != null}" th:text = "${exito}"></div>
+          <div class="container alert alert-danger" th:if="${fuente.prestada}">Fuente no disponible</div>
             <h2 class="text-center" th:text="${fuente.numero_de_serie}"></h2>
             <div class="container mt-3">
               <table class="table table-striped-columns">
@@ -39,9 +39,17 @@ and open the template in the editor.
             </div>
           </div>
 
-          <form th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
-            <button type="submit" class="btn btn-success">Solicitar</button>
-          </form>
+          <div>
+            <form th:if="${fuente.prestada}" th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
+              <button disabled type="submit" class="btn btn-success">Solicitar</button>
+            </form>
+  
+            <form th:if="${!fuente.prestada}" th:action="@{/usuario/pedir/__${fuente.id}__}" method="POST">
+              <button type="submit" class="btn btn-success">Solicitar</button>
+            </form>
+
+            <a th:href="@{/fuente/lista}" class="btn btn-secondary">Volver</a>  
+          </div>
         </div>
         <div th:replace="fragmentos :: scripts"></div>
     </body>
