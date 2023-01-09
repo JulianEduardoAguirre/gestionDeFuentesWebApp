@@ -19,6 +19,16 @@ public enum Radionucleido {
         this.constante_gamma = constante_gamma;
         this.semiperiodo = semiperiodo;
     }
+
+    public Double getConstante_gamma() {
+        return constante_gamma;
+    }
+
+    public Double getSemiperiodo() {
+        return semiperiodo;
+    }
+    
+    
     
     
 }

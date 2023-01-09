@@ -25,9 +25,9 @@
         <div id="content">
             <nav th:replace="fragmentos :: navbar"></nav>
 
-            <p th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}"></p>
+            <p class="alert alert-success" th:if="${logout != null}" th:text="${logout}"></p>
 
-            <div>
+            <div class="container mt-3">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi eos corporis illum iste, obcaecati, cupiditate, ullam asperiores quidem rerum optio nihil pariatur? Voluptatum, fugit eius sequi sunt earum libero provident!</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi eos corporis illum iste, obcaecati, cupiditate, ullam asperiores quidem rerum optio nihil pariatur? Voluptatum, fugit eius sequi sunt earum libero provident!</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi eos corporis illum iste, obcaecati, cupiditate, ullam asperiores quidem rerum optio nihil pariatur? Voluptatum, fugit eius sequi sunt earum libero provident!</p>

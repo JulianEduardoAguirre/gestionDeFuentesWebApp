@@ -9,7 +9,9 @@ import com.radioproteccion.fuentes.entidades.Blindaje;
 import com.radioproteccion.fuentes.entidades.Fabricante;
 import com.radioproteccion.fuentes.entidades.Fuente;
 import com.radioproteccion.fuentes.repositorios.FuenteRepositorio;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -105,6 +107,29 @@ public class FuenteServicio {
         return fuenteRepositorio.buscarPorFabricanteNombre(nombreFabricante);
     }
     
+    public double calcularActividad(Fuente fuente){
+        
+        Float actividad_inicial = fuente.getActividad_fabricacion();
+        Double semiperiodo = fuente.getRadionucleido().getSemiperiodo();
+        
+        Date fecha_inicial = fuente.getFecha_fabricacion();
+        Date fecha_actual = new Date();
+        
+        long diferencia = Math.abs(fecha_actual.getTime() - fecha_inicial.getTime());
+        long diferencia_anios = TimeUnit.DAYS.convert(diferencia, TimeUnit.MILLISECONDS)/365;
+                
+        
+        return actividad_inicial * Math.exp(-Math.log(2) * diferencia_anios / semiperiodo);
+        
+    }
     
+    public double calcularExposicionActual(Fuente fuente){
+        
+        double actividad_actual = calcularActividad(fuente);
+        
+        return actividad_actual * fuente.getRadionucleido().getConstante_gamma();
+        
+    }
+        
     
 }

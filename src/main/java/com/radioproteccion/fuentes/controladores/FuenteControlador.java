@@ -114,6 +114,20 @@ public class FuenteControlador {
         
     }
     
+    @GetMapping("/detalles/{id}")
+    public String detalles(@PathVariable("id") String id, ModelMap modelo){
+        
+        Fuente fuente = fuenteServicio.buscarPorId(id);
+                
+        modelo.put("fuente", fuente);
+        modelo.put("actividad_actual", fuenteServicio.calcularActividad(fuente));
+        modelo.put("tasa_actual", fuenteServicio.calcularExposicionActual(fuente));
+        
+        
+        
+        return "fuente-detalles.html";
+    }
+    
     
     
     
