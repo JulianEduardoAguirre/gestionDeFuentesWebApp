@@ -9,6 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -16,6 +20,10 @@ import org.hibernate.annotations.GenericGenerator;
  * @author jaguirre89
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Fabricante {
     
     @Id
@@ -33,36 +41,36 @@ public class Fabricante {
     @NotBlank(message = "Ingrese la dirección de contacto")
     private String contacto;
 
-    public Fabricante() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
+//    public Fabricante() {
+//    }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public String getNombre() {
+//        return nombre;
+//    }
+//
+//    public void setNombre(String nombre) {
+//        this.nombre = nombre;
+//    }
+//
+//    public String getTelefono() {
+//        return telefono;
+//    }
+//
+//    public void setTelefono(String telefono) {
+//        this.telefono = telefono;
+//    }
+//
+//    public String getContacto() {
+//        return contacto;
+//    }
+//
+//    public void setContacto(String contacto) {
+//        this.contacto = contacto;
+//    }
     
     
     

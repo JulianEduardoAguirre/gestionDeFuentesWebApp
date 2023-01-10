@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -17,6 +21,10 @@ import org.hibernate.annotations.GenericGenerator;
  * @author jaguirre89
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Blindaje {
 
     @Id
@@ -36,44 +44,44 @@ public class Blindaje {
     @NotNull(message = "Ingrese el peso del blindaje")
     private Long peso;
 
-    public Blindaje() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public Long getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Long altura) {
-        this.altura = altura;
-    }
-
-    public Long getRadio() {
-        return radio;
-    }
-
-    public void setRadio(Long radio) {
-        this.radio = radio;
-    }
-
-    public Long getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Long peso) {
-        this.peso = peso;
-    }
+//    public Blindaje() {
+//    }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public String getModelo() {
+//        return modelo;
+//    }
+//
+//    public void setModelo(String modelo) {
+//        this.modelo = modelo;
+//    }
+//
+//    public Long getAltura() {
+//        return altura;
+//    }
+//
+//    public void setAltura(Long altura) {
+//        this.altura = altura;
+//    }
+//
+//    public Long getRadio() {
+//        return radio;
+//    }
+//
+//    public void setRadio(Long radio) {
+//        this.radio = radio;
+//    }
+//
+//    public Long getPeso() {
+//        return peso;
+//    }
+//
+//    public void setPeso(Long peso) {
+//        this.peso = peso;
+//    }
     
     
     

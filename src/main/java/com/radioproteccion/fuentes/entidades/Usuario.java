@@ -17,6 +17,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -24,6 +28,10 @@ import org.hibernate.annotations.GenericGenerator;
  * @author aguir
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Usuario {
     
     
@@ -58,67 +66,67 @@ public class Usuario {
     private Rol rol;
 
 
-    public Usuario() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public Long getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(Long matricula) {
-        this.matricula = matricula;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Seccion getSeccion() {
-        return seccion;
-    }
-
-    public void setSeccion(Seccion seccion) {
-        this.seccion = seccion;
-    }
-    
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
+//    public Usuario() {
+//    }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public String getNombre() {
+//        return nombre;
+//    }
+//
+//    public void setNombre(String nombre) {
+//        this.nombre = nombre;
+//    }
+//
+//    public String getApellido() {
+//        return apellido;
+//    }
+//
+//    public void setApellido(String apellido) {
+//        this.apellido = apellido;
+//    }
+//
+//    public Long getMatricula() {
+//        return matricula;
+//    }
+//
+//    public void setMatricula(Long matricula) {
+//        this.matricula = matricula;
+//    }
+//    
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+//
+//    public Seccion getSeccion() {
+//        return seccion;
+//    }
+//
+//    public void setSeccion(Seccion seccion) {
+//        this.seccion = seccion;
+//    }
+//    
+//    public Rol getRol() {
+//        return rol;
+//    }
+//
+//    public void setRol(Rol rol) {
+//        this.rol = rol;
+//    }
     
 }

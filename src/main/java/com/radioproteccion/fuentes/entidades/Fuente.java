@@ -6,7 +6,6 @@
 package com.radioproteccion.fuentes.entidades;
 
 import com.radioproteccion.fuentes.enumeraciones.Radionucleido;
-import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,6 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,6 +30,10 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Fuente {
     
     @Id
@@ -59,76 +66,76 @@ public class Fuente {
     @ManyToOne(cascade = CascadeType.ALL)
     private Blindaje blindaje;
 
-    public Fuente() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getNumero_de_serie() {
-        return numero_de_serie;
-    }
-
-    public void setNumero_de_serie(String numero_de_serie) {
-        this.numero_de_serie = numero_de_serie;
-    }
-
-    public Float getActividad_fabricacion() {
-        return actividad_fabricacion;
-    }
-
-    public void setActividad_fabricacion(Float actividad_fabricacion) {
-        this.actividad_fabricacion = actividad_fabricacion;
-    }
-
-    public Float getTasa_exposicion_fabricacion() {
-        return tasa_exposicion_fabricacion;
-    }
-
-    public void setTasa_exposicion_fabricacion(Float tasa_exposicion_fabricacion) {
-        this.tasa_exposicion_fabricacion = tasa_exposicion_fabricacion;
-    }
-
-    public Date getFecha_fabricacion() {
-        return fecha_fabricacion;
-    }
-
-    public void setFecha_fabricacion(Date fecha_fabricacion) {
-        this.fecha_fabricacion = fecha_fabricacion;
-    }
-
-    public Radionucleido getRadionucleido() {
-        return radionucleido;
-    }
-
-    public void setRadionucleido(Radionucleido radionucleido) {
-        this.radionucleido = radionucleido;
-    }
-
-    public Fabricante getFabricante() {
-        return fabricante;
-    }
-
-    public void setFabricante(Fabricante fabricante) {
-        this.fabricante = fabricante;
-    }
-
-    public Blindaje getBlindaje() {
-        return blindaje;
-    }
-
-    public void setBlindaje(Blindaje blindaje) {
-        this.blindaje = blindaje;
-    }
-
-    public Boolean getPrestada() {
-        return prestada;
-    }
-
-    public void setPrestada(Boolean prestada) {
-        this.prestada = prestada;
-    }
+//    public Fuente() {
+//    }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public String getNumero_de_serie() {
+//        return numero_de_serie;
+//    }
+//
+//    public void setNumero_de_serie(String numero_de_serie) {
+//        this.numero_de_serie = numero_de_serie;
+//    }
+//
+//    public Float getActividad_fabricacion() {
+//        return actividad_fabricacion;
+//    }
+//
+//    public void setActividad_fabricacion(Float actividad_fabricacion) {
+//        this.actividad_fabricacion = actividad_fabricacion;
+//    }
+//
+//    public Float getTasa_exposicion_fabricacion() {
+//        return tasa_exposicion_fabricacion;
+//    }
+//
+//    public void setTasa_exposicion_fabricacion(Float tasa_exposicion_fabricacion) {
+//        this.tasa_exposicion_fabricacion = tasa_exposicion_fabricacion;
+//    }
+//
+//    public Date getFecha_fabricacion() {
+//        return fecha_fabricacion;
+//    }
+//
+//    public void setFecha_fabricacion(Date fecha_fabricacion) {
+//        this.fecha_fabricacion = fecha_fabricacion;
+//    }
+//
+//    public Radionucleido getRadionucleido() {
+//        return radionucleido;
+//    }
+//
+//    public void setRadionucleido(Radionucleido radionucleido) {
+//        this.radionucleido = radionucleido;
+//    }
+//
+//    public Fabricante getFabricante() {
+//        return fabricante;
+//    }
+//
+//    public void setFabricante(Fabricante fabricante) {
+//        this.fabricante = fabricante;
+//    }
+//
+//    public Blindaje getBlindaje() {
+//        return blindaje;
+//    }
+//
+//    public void setBlindaje(Blindaje blindaje) {
+//        this.blindaje = blindaje;
+//    }
+//
+//    public Boolean getPrestada() {
+//        return prestada;
+//    }
+//
+//    public void setPrestada(Boolean prestada) {
+//        this.prestada = prestada;
+//    }
     
     
      
